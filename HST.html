@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haryana Sandhya Times - हरियाणा संध्या टाइम्स</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="logo2.png.jpg" alt="Haryana Sandhya Times Logo" class="logo" id="logoImg">
+                    <div class="logo-text">
+                        <h1 id="siteName">हरियाणा संध्या टाइम्स</h1>
+                        <p class="tagline" id="siteTagline">सत्य की आवाज़</p>
+                    </div>
+                </div>
+                <button class="lang-toggle" id="langToggle">
+                    <i class="fas fa-language"></i>
+                    <span id="langText">English</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active" data-page="home" id="navHome">होम</a></li>
+                <li><a href="#articles" class="nav-link" data-page="articles" id="navArticles">लेख</a></li>
+                <li><a href="#about" class="nav-link" data-page="about" id="navAbout">हमारे बारे में</a></li>
+                <li><a href="#reporter" class="nav-link" data-page="reporter" id="navReporter">रिपोर्टर बनें</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <section id="homeSection" class="section active">
+                <h2 class="section-title" id="recentArticlesTitle">हाल के लेख</h2>
+                <div class="articles-grid" id="articlesGrid"></div>
+                <button class="load-more" id="loadMore" style="display: none;">
+                    <span id="loadMoreText">और देखें</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="loading" id="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span id="loadingText">लोड हो रहा है...</span>
+                </div>
+            </section>
+
+            <section id="articlesSection" class="section">
+                <h2 class="section-title" id="genresTitle">श्रेणियाँ</h2>
+                <div class="genres-grid" id="genresGrid"></div>
+                <div id="genreArticlesContainer" style="display: none;">
+                    <button class="back-btn" id="backToGenres">
+                        <i class="fas fa-arrow-left"></i>
+                        <span id="backText">वापस जाएं</span>
+                    </button>
+                    <h3 class="genre-title" id="selectedGenreTitle"></h3>
+                    <div class="articles-grid" id="genreArticlesGrid"></div>
+                </div>
+            </section>
+
+            <section id="aboutSection" class="section">
+                <h2 class="section-title" id="aboutTitle">हमारे बारे में</h2>
+                <div class="about-content" id="aboutContent"></div>
+            </section>
+
+            <section id="reporterSection" class="section">
+                <h2 class="section-title" id="reporterTitle">रिपोर्टर पंजीकरण</h2>
+                <form class="reporter-form" id="reporterForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label id="labelName">नाम *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelGender">लिंग *</label>
+                            <select name="gender" required>
+                                <option value="" id="optionSelect">चुनें</option>
+                                <option value="male" id="optionMale">पुरुष</option>
+                                <option value="female" id="optionFemale">महिला</option>
+                                <option value="other" id="optionOther">अन्य</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelDOB">जन्म तिथि *</label>
+                            <input type="date" name="dob" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelFatherName">पिता का नाम *</label>
+                            <input type="text" name="fatherName" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelBloodGroup">रक्त समूह *</label>
+                            <select name="bloodGroup" required>
+                                <option value="" id="optionSelectBG">चुनें</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelAadhar">आधार नंबर *</label>
+                            <input type="text" name="aadhar" pattern="[0-9]{12}" maxlength="12" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelState">राज्य *</label>
+                            <input type="text" name="state" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelDistrict">जिला *</label>
+                            <input type="text" name="district" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelMobile">मोबाइल नंबर *</label>
+                            <input type="tel" name="mobile" pattern="[0-9]{10}" maxlength="10" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelWhatsapp">व्हाट्सएप नंबर *</label>
+                            <input type="tel" name="whatsapp" pattern="[0-9]{10}" maxlength="10" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label id="labelAddress">पता *</label>
+                            <textarea name="address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelPincode">पिनकोड *</label>
+                            <input type="text" name="pincode" pattern="[0-9]{6}" maxlength="6" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelEmail">ईमेल *</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelProfile">प्रोफ़ाइल फोटो *</label>
+                            <input type="file" name="profilePic" accept="image/*" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelID">आईडी प्रूफ *</label>
+                            <input type="file" name="idProof" accept="image/*,application/pdf" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label id="labelOtherDocs">अन्य दस्तावेज़</label>
+                            <input type="file" name="otherDocs" accept="image/*,application/pdf" multiple>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span id="registerText">पंजीकरण करें</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="logo2.png.jpg" alt="Logo" class="footer-logo">
+                    <h3 id="footerSiteName">हरियाणा संध्या टाइम्स</h3>
+                    <p id="footerDesc">हरियाणा संध्या टाइम्स एक प्रमुख समाचार पोर्टल है जो निष्पक्ष और सत्य समाचार प्रदान करता है। हमारा उद्देश्य समाज को सूचित और जागरूक रखना है।</p>
+                </div>
+                <div class="footer-section">
+                    <h4 id="footerShareTitle">हमें फॉलो करें</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 id="footerNavigateTitle">नेविगेट</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home" class="footer-link" data-page="home" id="footerHome">होम</a></li>
+                        <li><a href="#articles" class="footer-link" data-page="articles" id="footerArticles">लेख</a></li>
+                        <li><a href="#about" class="footer-link" data-page="about" id="footerAbout">हमारे बारे में</a></li>
+                        <li><a href="#reporter" class="footer-link" data-page="reporter" id="footerReporter">रिपोर्टर बनें</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p id="footerMade">Made with <i class="fas fa-heart"></i> by <a href="https://humblesolutions.in" target="_blank">Humble Solutions Pvt Ltd</a></p>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
